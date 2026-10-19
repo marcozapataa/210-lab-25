@@ -205,9 +205,6 @@ vector<long long> deleting_race(vector<string>& vec, list<string>& lst, set<stri
     // find middle of vector
     int middle = vec.size() / 2;
 
-    // find middle of vector
-    int middle = vec.size() / 2;
-
     // start timing
     auto start = high_resolution_clock::now();
 
@@ -240,7 +237,7 @@ vector<long long> deleting_race(vector<string>& vec, list<string>& lst, set<stri
 
     // find middle of set
     auto setIt = st.begin();
-    advance(setIt. st.size() / 2);
+    advance(setIt, st.size() / 2);
 
     // start timing
     start = high_resolution_clock::now();
@@ -256,4 +253,25 @@ vector<long long> deleting_race(vector<string>& vec, list<string>& lst, set<stri
     long long setTime = duration.count();
 
     return {vecTime, listTime, setTime};
+}
+
+// display results in a formatted table
+void display_results(const vector<vector<long long>>& results, const vector<string>& operations) {
+
+    cout << "\nRace Results (nanoseconds)\n";
+
+    cout << left << setw(15) << "Operation"
+         << setw(15) << "Vector"
+         << setw(15) << "List"
+         << setw(15) << "Set" << endl;
+
+     for (size_t i = 0; i < results.size(); i++) {
+        cout << left << setw(15) << operations[i];
+
+        for (size_t j = 0; j < results[i].size(); j++) {
+            cout << setw(15) << results[i][j];
+        }
+
+        cout << endl;
+    }
 }
