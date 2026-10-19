@@ -92,7 +92,7 @@ vector<long long> reading_race(vector<string>& vec, list<string>& lst, set<strin
     fin.close();
 
     // reopen file
-    fin.open("code.txt");
+    fin.open("codes.txt");
 
     // start timing
     start = high_resolution_clock::now();
