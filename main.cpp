@@ -146,3 +146,55 @@ vector<long long> sorting_race(vector<string>& vec, list<string>& lst) {
     // set is already sorted
     return {vecTime, listTime, -1};
 }
+
+// inserting TESTCODE into each container
+vector<long long> inserting_race(vector<string>& vec, list<string>& lst, set<string>& st) {
+
+    // find the middle vector
+    int middle = vec.size() / 2;
+
+    // start timing
+    auto start = high_resolution_clock::now();
+
+    // instert code into middle
+    vec.insert(vec.begin() + middle, "TESTCODE");
+
+    // end timing
+    auto end = high_resolution_clock::now();
+
+    // calculate duration
+    auto duration = duration_cast<nanoseconds>(end - start);
+    long long vecTime = duration.count();
+
+    // find middle of list
+    auto it = lst.begin();
+    advance(it, lst.size() / 2);
+
+    // start timing
+    start = high_resolution_clock::now();
+
+    // insert code into middle
+    lst.insert(it, "TESTCODE");
+
+    // end timing
+    end = high_resolution_clock::now();
+
+    // calculate duration
+    duration = duration_cast<nanoseconds>(end - start);
+    long long listTime = duration.count();
+
+    //start timing
+    start = high_resolution_clock::now();
+
+    // insert code into set
+    st.insert("TESTCODE");
+
+    // end timing
+    end = high_resolution_clock::now();
+
+    // calculate duration
+    duration = duration_cast<nanoseconds>(end - start);
+    long long setTime = duration.count();
+
+    return {vecTime, listTime, setTime};
+}
