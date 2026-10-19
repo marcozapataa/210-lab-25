@@ -42,3 +42,74 @@ int main() {
 
     return 0;
 }
+
+// read codes into each container
+vector<long long> reading_race(vector<string>& vec, list<string>& lst, set<string>& st) {
+    ifstream fin("codes.txt");
+    if (!fin) {
+        cout << "Error opeing codes.txt" << endl;
+        exit(1);
+    }
+
+    string code;
+    long long vecTime, listTime, setTime;
+
+    // start timing
+    auto start = high_resolution_clock::now();
+
+    // read code into vector
+    while (fin >> code) {
+        vec.push_back(code);
+    }
+
+    // end timing
+    auto end = high_resolution_clock::now();
+
+    // calculate duration
+    auto duration = duration_cast<nanoseconds>(end - start);
+    vecTime = duration.count();
+
+    fin.close();
+
+    // reopen file
+    fin.open("codes.txt");
+
+    // start timing
+    start = high_resolution_clock::now();
+
+    // read into list
+    while (fin >> code) {
+        lst.push_back(code);
+    }
+
+    // end timing
+    end = high_resolution_clock::now();
+
+    // calculate duration
+    duration = duration_cast<nanoseconds>(end - start);
+    listTime = duration.count();
+
+    fin.close();
+
+    // reopen file
+    fin.open("code.txt");
+
+    // start timing
+    start = high_resolution_clock::now();
+
+    // read code into set
+    while (fin >> code) {
+        st.insert(code);
+    }
+
+    // end timing
+    end = high_resolution_clock::now();
+
+    // calulate duration
+    duration = duration_cast<nanoseconds>(end - start);
+    setTime = duration.count();
+
+    fin.close();
+
+    return {vecTime, listTime, setTime};
+}
