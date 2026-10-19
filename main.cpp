@@ -198,3 +198,62 @@ vector<long long> inserting_race(vector<string>& vec, list<string>& lst, set<str
 
     return {vecTime, listTime, setTime};
 }
+
+// delete from middle element from each container
+vector<long long> deleting_race(vector<string>& vec, list<string>& lst, set<string>& st) {
+
+    // find middle of vector
+    int middle = vec.size() / 2;
+
+    // find middle of vector
+    int middle = vec.size() / 2;
+
+    // start timing
+    auto start = high_resolution_clock::now();
+
+    // remove the element
+    vec.erase(vec.begin() + middle);
+
+    // end timing
+    auto end = high_resolution_clock::now();
+
+    // calculate duration
+    auto duration = duration_cast<nanoseconds>(end - start);
+    long long vecTime = duration.count();
+
+    // find the middle of list
+    auto it = lst.begin();
+    advance(it, lst.size() / 2);
+
+    // start timing
+    start = high_resolution_clock::now();
+
+    // remove the element
+    lst.erase(it);
+
+    // end timing
+    end = high_resolution_clock::now();
+
+    // calculate duration
+    duration = duration_cast<nanoseconds>(end - start);
+    long long listTime = duration.count();
+
+    // find middle of set
+    auto setIt = st.begin();
+    advance(setIt. st.size() / 2);
+
+    // start timing
+    start = high_resolution_clock::now();
+
+    // remove the element
+    st.erase(setIt);
+
+    // end timing
+    end = high_resolution_clock::now();
+
+    // calculate duration
+    duration = duration_cast<nanoseconds>(end - start);
+    long long setTime = duration.count();
+
+    return {vecTime, listTime, setTime};
+}
