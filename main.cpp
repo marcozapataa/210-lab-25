@@ -113,3 +113,36 @@ vector<long long> reading_race(vector<string>& vec, list<string>& lst, set<strin
 
     return {vecTime, listTime, setTime};
 }
+
+// sort vector and list
+vector<long long> sorting_race(vector<string>& vec, list<string>& lst) {
+
+    // start timing
+    auto start = high_resolution_clock::now();
+
+    // sort vector
+    sort(vec.begin(), vec.end());
+
+    // end timing
+    auto end = high_resolution_clock::now();
+
+    // calculate duration
+    auto duration = duration_cast<nanoseconds>(end - start);
+    long long vecTime = duration.count();
+
+    // start timing
+    start = high_resolution_clock::now();
+
+    // sort list
+    lst.sort();
+
+    // end timing
+    end = high_resolution_clock::now();
+
+    // calculate duration
+    duration = duration_cast<nanoseconds>(end - start);
+    long long listTime = duration.count();
+
+    // set is already sorted
+    return {vecTime, listTime, -1};
+}
